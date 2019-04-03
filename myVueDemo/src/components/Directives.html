@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id ="app">
+  <p v-if="show">显示这段文本</p>
+  <button v-on:click="handleClose">点击隐藏</button>  <!--绑定事件监听 v-on 可以直接用@来缩写-->
+</div>
+<div id ="kk">
+  <a v-bind:href="url">链接</a>
+  <img v-bind:src="imgUrl"> <!-- v-bind 可以直接用 ： 来简写  d动态更新HTML元素上的属性-->
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  var kk=new Vue({
+    el:'#kk',
+    data:{
+        url:'https://www.github.com',
+        imgUrl:'http://xxx.xxx.xx/img.png'
+    }
+  })
+</script>
+<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+        show:true
+    },
+    methods:{
+        handleClose:function () {
+          this.show=false;
+        }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-component :class="{'active':isActive}"></my-component>
+</div>
+<div id="ll">
+  <div :style="styles">文本属性写在data中</div>
+</div>
+<div id="ls">
+  <div :style="styles">文本属性写在cmpute中</div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="customerComponents.js"></script>
+<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+      isActive:true
+    }
+  })
+</script>
+<script>
+  var ll=new Vue({
+    el:'#ll',
+    data:{
+      styles:{
+        color: 'red',
+        fontSize:14+'px'
+      }
+    }
+  })
+</script>
+<script>
+  var ls=new Vue({
+    el:'#ls',
+    data:{
+      color: 'red',
+      fontSize:14+'px'
+    },
+   computed:{
+        styles:function () {
+          return {
+            color:this.color,
+            fontSize:this.fontSize
+          }
+        }
+   }
+  })
+</script>
+</body>
+</html>
