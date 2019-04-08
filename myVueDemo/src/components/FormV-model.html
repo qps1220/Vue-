@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<div id="app">
+  <input type="text" @input="handleInput" placeholder="请输入....">
+  <p>输入的内容是：{{message}}</p>
+</div>-->
+
+<!--<div id="app1">
+  <textarea v-model="text" placeholder="请输入...."></textarea>    <!--敲下汉子才触发跟新-->
+ <!-- <p>输入的内容是:</p>
+  <p style="white-space: pre">{{text}}</p>
+</div>-->
+<!--<div id="app">
+  <input type="radio":checked="picked" placeholder="请输入....">  <!--单选按钮直接使用v-bind 为真时选中否时不选中
+  <p>单选按钮</p>
+</div>-->
+<div id="app">
+  <input type="radio"v-model="picked" value="html" id="html" placeholder="请输入....">  <!--复选按钮使用v-model 配合value-->
+  <label for="html">HTML</label>
+  <BR>
+  <input type="radio"v-model="picked" value="js" id="js" placeholder="请输入....">  <!--复选按钮使用v-model 配合value-->
+  <label for="html">JS</label>
+  <BR>
+  <input type="radio"v-model="picked" value="css" id="css" placeholder="请输入....">  <!--复选按钮使用v-model 配合value-->
+  <label for="html">CSS</label>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<!--<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+        message:''
+    },
+    methods:{
+        handleInput:function (e) {
+          this.message=e.target.value;
+        }
+    }
+  })
+</script>-->
+<!--<script>
+  var app1=new Vue({
+    el:'#app1',
+    data:{
+        text:''
+    }
+  })
+</script>-->
+<!--<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+     picked:true
+    }
+  })
+</script>-->
+<script>
+  var app=new Vue({
+    el:'#app',
+    data:{
+      picked:'js'
+    }
+  })
+</script>
+</body>
+</html>
