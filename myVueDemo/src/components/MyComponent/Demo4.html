@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件间的传递参数自定义事件v-on $emit()</title>
+</head>
+<body>
+<!-- @ 是语法糖 v-on 指令-->
+<div id="app">
+  <p>总数：{{total}}</p>
+  <my-component @increace="handelGetTotal" @reduce="handelGetTotal">
+  </my-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  Vue.component('my-component',{
+      template:'\
+      <div>\
+      <button @click="handelInceace">+1</button>\
+      <button @click="handelReduce">-1</button>\
+      </div>',
+    data:function () {
+      return {
+      counter:0
+    }
+  },
+    methods:{
+      handelInceace:function () {
+        this.counter++;
+        this.$emit('increace',this.counter);
+      },
+      handelReduce:function () {
+        this.counter--;
+        this.$emit('reduce',this.counter);
+      }
+  }
+  });
+  var app=new Vue({
+    el:'#app',
+    data:{
+        total:0
+    },
+    methods:{
+      handelGetTotal:function (total) {
+          this.total=total;
+        }
+    }
+  })
+</script>
+</body>
+<!--除了监听事件外 还可以监听Dom 用.native-->
+
+</html>

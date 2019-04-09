@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件间的传递参数自定义事件 v-model</title>
+</head>
+<body>
+<div id="app">
+  <p>总数：{{total}}</p>
+
+<my-component v-model="total">
+</my-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  Vue.component('my-component',{
+    template:'<button @click="handelClick">+1</button>',
+    data:function () {
+      return {
+        counter:0
+      }
+    },
+    methods:{
+      handelClick:function () {
+        this.counter++;
+        this.$emit('input', this.counter);  //input  也可以称作是一个语法糖
+      }
+    }
+  });
+  var app=new Vue({
+    el:'#app',
+    data:{
+      total:0
+    }
+  })
+</script>
+</body>
+</html>

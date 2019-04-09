@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slot 绑定父组件的数据和绑定子组件的数据</title>
+</head>
+<body>
+<div id="app">
+  <!--<child-component v-show="showChild">
+  </child-component>-->
+  <child-component>
+  </child-component>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  /*Vue.component('child-component',{
+      template:'<div>子组件</div>'
+  });*/
+  Vue.component('child-component',{
+     template:'<div v-show="showChild">子组件</div>',
+    data:function () {
+     return{
+          showChild:true
+      }
+    }
+  });
+ /* var app=new Vue({
+    el:'#app',
+    data:{
+        showChild:true
+    }
+  })*/
+  var app=new Vue({
+    el:'#app'
+  })
+</script>
+</body>
+</html>

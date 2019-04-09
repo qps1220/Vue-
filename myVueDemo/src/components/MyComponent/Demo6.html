@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非父子组件间的通信</title>
+</head>
+<body>
+<div id="app">
+  {{message}}
+  <component-a></component-a>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+  var bus=new Vue();
+  Vue.component('component-a',{
+      template: '<button @click="handelEvent">传递事件</button>',
+      methods:{
+        handelEvent:function () {
+            bus.$emit('on-message','来自组件commpemt-a 的内容');
+          }
+      }
+  });
+  var app=new Vue({
+    el:'#app',
+    data:{
+        message:''
+    },
+    mounted:function () {
+      var _this=this;
+      //在实例化初始时，监听来自Bus 的实例事件
+      bus.$on('on-message',function (msg) {
+        _this.message=msg
+      })
+    }
+  })
+</script>
+</body>
+</html>
